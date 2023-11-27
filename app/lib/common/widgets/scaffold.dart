@@ -72,8 +72,9 @@ class KMScaffold extends StatelessWidget {
               ),
             ),
             appBar: AppBar(
+              scrolledUnderElevation: 0,
               systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: context.colors.background,
+                statusBarColor: context.colors.surface,
               ),
               title: KMText(
                 context.s.app_title,
@@ -93,8 +94,9 @@ class KMScaffold extends StatelessWidget {
         return Scaffold(
           backgroundColor: context.colors.background,
           appBar: AppBar(
+            scrolledUnderElevation: 0,
             systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: context.colors.background,
+              statusBarColor: context.colors.surface,
             ),
             title: KMText(
               context.s.app_name,
