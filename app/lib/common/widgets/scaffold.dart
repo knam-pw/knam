@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:knam/common/l10n/l10n.dart';
 import 'package:knam/common/router/routes.dart';
@@ -71,6 +72,9 @@ class KMScaffold extends StatelessWidget {
               ),
             ),
             appBar: AppBar(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: context.colors.background,
+              ),
               title: KMText(
                 context.s.app_title,
               ),
@@ -89,6 +93,9 @@ class KMScaffold extends StatelessWidget {
         return Scaffold(
           backgroundColor: context.colors.background,
           appBar: AppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: context.colors.background,
+            ),
             title: KMText(
               context.s.app_name,
             ),
