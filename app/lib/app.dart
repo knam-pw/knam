@@ -13,28 +13,36 @@ class KMApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final platformBrightness = MediaQuery.platformBrightnessOf(context);
-    final brightness = context.watch<BrightnessCubit>().state;
+    return BlocBuilder<BrightnessCubit, Brightness?>(
+      builder: (context, brightness) {
+        final platformBrightness = MediaQuery.platformBrightnessOf(context);
+        if (brightness == null) {
+          context.read<BrightnessCubit>().setBrightness(platformBrightness);
+        }
+        final currentBrightness = brightness ?? platformBrightness;
 
-    if (brightness == null) {
-      context.read<BrightnessCubit>().setBrightness(platformBrightness);
-    }
+        return BlocBuilder<LanguageCubit, Language>(
+          builder: (context, language) {
+            final surfaceColor = currentBrightness == Brightness.light
+                ? const Color(0xFFF1F1F1)
+                : const Color(0xFF222222);
 
-    return BlocBuilder<LanguageCubit, Language>(
-      builder: (context, language) {
-        return MaterialApp.router(
-          onGenerateTitle: (context) => context.s.app_title,
-          localizationsDelegates: const [
-            ...AppLocalizations.localizationsDelegates,
-            DefaultMaterialLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: language.toLocale(),
-          theme: KMTheme.light(context),
-          darkTheme: KMTheme.dark(context),
-          themeMode: (brightness ?? platformBrightness).toThemeMode(),
-          routerConfig: context.read<KMRouter>().router,
-          debugShowCheckedModeBanner: false,
+            return MaterialApp.router(
+              onGenerateTitle: (context) => context.s.app_title,
+              localizationsDelegates: const [
+                ...AppLocalizations.localizationsDelegates,
+                DefaultMaterialLocalizations.delegate,
+              ],
+              color: surfaceColor,
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: language.toLocale(),
+              theme: KMTheme.light(context),
+              darkTheme: KMTheme.dark(context),
+              themeMode: currentBrightness.toThemeMode(),
+              routerConfig: context.read<KMRouter>().router,
+              debugShowCheckedModeBanner: false,
+            );
+          },
         );
       },
     );

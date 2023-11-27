@@ -49,7 +49,7 @@ class KMScaffold extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
-
+    
         if (maxWidth < 600) {
           return Scaffold(
             backgroundColor: context.colors.background,
@@ -90,7 +90,7 @@ class KMScaffold extends StatelessWidget {
             body: body,
           );
         }
-
+    
         return Scaffold(
           backgroundColor: context.colors.background,
           appBar: AppBar(
