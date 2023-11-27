@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:knam/common/l10n/app_localizations.dart';
@@ -28,7 +27,6 @@ class KMApp extends StatelessWidget {
           localizationsDelegates: const [
             ...AppLocalizations.localizationsDelegates,
             DefaultMaterialLocalizations.delegate,
-            DefaultCupertinoLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
           locale: language.toLocale(),
