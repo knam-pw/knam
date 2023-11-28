@@ -8,8 +8,6 @@ import 'package:knam/features/language/language_cubit.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  KMRouter.setUrlStrategy();
-
   runApp(
     MultiProvider(
       providers: [

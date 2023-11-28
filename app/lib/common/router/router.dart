@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:knam/common/router/routes.dart';
-import 'package:url_strategy/url_strategy.dart';
 
 class KMRouter {
   GoRouter get router => _router;
@@ -20,10 +19,6 @@ class KMRouter {
       return state.matchedLocation;
     },
   );
-
-  static void setUrlStrategy() {
-    setPathUrlStrategy();
-  }
 
   void init() {
     _allPaths = routes
